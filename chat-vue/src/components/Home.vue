@@ -3,17 +3,29 @@
         <h1>Чат на vue js</h1>
         <button v-if="!auth" @click="goLogin">Вход</button>
         <button v-else @click="logout">Выход</button>
-        <Room v-if="auth"></Room>
+
+        <Room v-if="auth" @openDialog="openDialog"></Room>
+        <Dialog v-if="dialog.show" :id="dialog.id"></Dialog>
     </div>
 </template>
 
 <script>
-    import Room from '@/components/Room'
+    import Room from '@/components/rooms/Room.vue'
+    import Dialog from '@/components/rooms/Dialog.vue'
 
     export default{
         name: "Home",
         components: {
-            Room
+            Room,
+            Dialog
+        },
+        data() {
+            return {
+                dialog: {
+                    id: '',
+                    show: false,
+                }
+            }
         },
         computed: {
             auth() {
@@ -30,6 +42,10 @@
                 sessionStorage.removeItem("auth_token")
                 window.location = '/'
             },
+            openDialog(id) {
+                this.dialog.id = id
+                this.dialog.show = true
+            }
         },
     }
 </script>

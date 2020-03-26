@@ -8,6 +8,7 @@
 
 <script>
     import $ from 'jquery'
+    
     export default {
         name: "Login",
         data(){
