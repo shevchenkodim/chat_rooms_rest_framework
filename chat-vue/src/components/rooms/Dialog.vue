@@ -1,6 +1,5 @@
 <template>
     <div class="dialog">
-
         <div v-for="dialog in dialogs">
             <h2>{{dialog.user.username}}</h2>
             <p>{{dialog.text}}</p>
@@ -36,9 +35,8 @@
                     data: {
                         room: this.id
                     },
-                    succeess: (response) => {
-                        this.dialogs = response
-                        console.log(response.data.data);
+                    success: (response) => {
+                        this.dialogs = response.data.data
                     }
                 });
             },

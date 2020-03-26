@@ -42,7 +42,7 @@
                 sessionStorage.removeItem("auth_token")
                 window.location = '/'
             },
-            openDialog(id) {
+            openDialog(id){
                 this.dialog.id = id
                 this.dialog.show = true
             }

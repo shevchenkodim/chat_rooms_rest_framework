@@ -34,13 +34,12 @@
                     type: 'GET',
                     success: (response) => {
                         this.rooms = response.data.data
-                        console.log(response.data);
                     }
                 });
             },
             openDialog(id) {
                 this.$emit("openDialog", id)
-            }
+            },
         }
     }
 </script>

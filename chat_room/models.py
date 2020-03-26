@@ -13,6 +13,8 @@ class Room(models.Model):
         verbose_name = "Комната чата"
         verbose_name_plural = "Комнати чатов"
 
+    def __str__(self):
+        return '{} {}'.format(self.creater, self.date)
 
 class Chat(models.Model):
     """Модель чата"""
@@ -24,3 +26,6 @@ class Chat(models.Model):
     class Meta:
         verbose_name = "Сообщение чата"
         verbose_name_plural = "Сообщения чатов"
+
+    def __str__(self):
+        return '{} {} {} {}'.format(self.room, self.text, self.user, self.date)
