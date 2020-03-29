@@ -1,11 +1,28 @@
 <template>
-    <div class="dialog">
-        <div v-for="dialog in dialogs">
-            <h2>{{dialog.user.username}}</h2>
-            <p>{{dialog.text}}</p>
-            <span>{{dialog.date}}</span>
-        </div>
-    </div>
+    <mu-col style="width: 100%;" align-items="end">
+        <mu-container class="dialog">
+            <mu-row direction="column"
+                    justify-content="start"
+                    align-items="end"
+                    v-for="dialog in dialogs">
+                <p><strong>{{dialog.user.username}}</strong></p>
+                <p>{{dialog.text}}</p>
+                <span>{{dialog.date}}</span>
+            </mu-row>
+        </mu-container>
+        <mu-container>
+            <mu-row justify-content="end" align-items="end">
+                <mu-text-field v-model="form.textarea"
+                               multi-line
+                               :rows="3"
+                               full-width
+                               placeholder="Введите текст сообщения">
+                </mu-text-field>
+                <mu-button class="btn-send" round color="success">Отправить</mu-button>
+            </mu-row>
+        </mu-container>
+        <br>
+    </mu-col>
 </template>
 
 <script>
@@ -19,6 +36,9 @@
         data() {
             return {
                 dialogs: '',
+                form: {
+                    textarea: '',
+                },
             }
         },
         created() {
@@ -46,8 +66,6 @@
 
 <style scoped>
     .dialog {
-        width: 70%;
-        height: 100px;
         border: 1px solid #000;
     }
 </style>

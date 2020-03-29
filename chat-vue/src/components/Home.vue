@@ -1,12 +1,18 @@
 <template>
-    <div>
-        <h1>Чат на vue js</h1>
-        <button v-if="!auth" @click="goLogin">Вход</button>
-        <button v-else @click="logout">Выход</button>
-
+    <mu-container>
+        <mu-appbar style="width: 100%;" color="primary">
+          Чат на vue js
+          <mu-button flat slot="right" v-if="!auth" @click="goLogin">Вход</mu-button>
+          <mu-button flat slot="right" v-else @click="logout">Выход</mu-button>
+        </mu-appbar>
+        <mu-row>
+            <h1></h1>
+        </mu-row>
+        <mu-row>
         <Room v-if="auth" @openDialog="openDialog"></Room>
         <Dialog v-if="dialog.show" :id="dialog.id"></Dialog>
-    </div>
+        </mu-row>
+    </mu-container>
 </template>
 
 <script>
