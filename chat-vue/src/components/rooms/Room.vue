@@ -1,16 +1,26 @@
 <template>
-    <mu-col span="3" style="width: 100%;" class="rooms-list">
-        <mu-button @click="addRoom">Создать комнату</mu-button>
-        <div v-for="room in rooms">
-            <h3 @click="openDialog(room.id)">{{room.creater.username}}</h3>
-            <small>{{room.date}}</small>
-        </div>
-    </mu-col>
+    <HomeSlot>
+        <mu-row>
+            <mu-col span="3" style="width: 100%;" class="rooms-list">
+                <mu-button @click="addRoom">Создать комнату</mu-button>
+                <div v-for="room in rooms">
+                    <h3 @click="openDialog(room.id)">{{room.creater.username}}</h3>
+                    <small>{{room.date}}</small>
+                </div>
+            </mu-col>
+            <slot></slot>
+        </mu-row>
+    </HomeSlot>
 </template>
 
 <script>
+    import HomeSlot from '../Home'
+
     export default{
         name: "Room",
+        components: {
+            HomeSlot,
+        },
         data() {
             return {
                 rooms: '',
@@ -33,7 +43,8 @@
                 });
             },
             openDialog(id) {
-                this.$emit("openDialog", id)
+                //this.$emit("openDialog", id)
+                this.$router.push({name: 'dialog', params: {id: id}})
             },
             // Создание комнаты
             addRoom() {
