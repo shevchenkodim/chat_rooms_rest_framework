@@ -1,5 +1,6 @@
 <template>
     <mu-col style="width: 100%;" align-items="end">
+        <AddUsers :room="id"></AddUsers>
         <mu-container class="dialog">
             <mu-row direction="column"
                     justify-content="start"
@@ -26,10 +27,15 @@
 </template>
 
 <script>
+    import AddUsers from './AddUsers'
+
     export default{
         name: "Dialog",
         props: {
             id: '',
+        },
+        components: {
+            AddUsers
         },
         data() {
             return {
